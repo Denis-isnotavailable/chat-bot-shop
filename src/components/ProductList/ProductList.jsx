@@ -5,14 +5,14 @@ import {useTelegram} from "../../hooks/useTelegram";
 import {useCallback, useEffect} from "react";
 
 const products = [
-    {id: '1', title: 'Джинсы', price: 5000, description: 'Синего цвета, прямые'},
-    {id: '2', title: 'Куртка', price: 12000, description: 'Зеленого цвета, теплая'},
-    {id: '3', title: 'Джинсы 2', price: 5000, description: 'Синего цвета, прямые'},
-    {id: '4', title: 'Куртка 8', price: 122, description: 'Зеленого цвета, теплая'},
-    {id: '5', title: 'Джинсы 3', price: 5000, description: 'Синего цвета, прямые'},
-    {id: '6', title: 'Куртка 7', price: 600, description: 'Зеленого цвета, теплая'},
-    {id: '7', title: 'Джинсы 4', price: 5500, description: 'Синего цвета, прямые'},
-    {id: '8', title: 'Куртка 5', price: 12000, description: 'Зеленого цвета, теплая'},
+    {id: '1', title: 'Джинсы', price: 500, description: 'Синего цвета, прямые', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbPl9ck0xRFrWSQkG3CVjF0hToyZgvsjXA3A&s'},
+    {id: '2', title: 'Куртка', price: 1200, description: 'Зеленого цвета, теплая', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbPl9ck0xRFrWSQkG3CVjF0hToyZgvsjXA3A&s'},
+    {id: '3', title: 'Джинсы 2', price: 500, description: 'Синего цвета, прямые', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbPl9ck0xRFrWSQkG3CVjF0hToyZgvsjXA3A&s'},
+    {id: '4', title: 'Куртка 8', price: 122, description: 'Зеленого цвета, теплая', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbPl9ck0xRFrWSQkG3CVjF0hToyZgvsjXA3A&s'},
+    {id: '5', title: 'Джинсы 3', price: 500, description: 'Синего цвета, прямые', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbPl9ck0xRFrWSQkG3CVjF0hToyZgvsjXA3A&s'},
+    {id: '6', title: 'Куртка 7', price: 600, description: 'Зеленого цвета, теплая', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbPl9ck0xRFrWSQkG3CVjF0hToyZgvsjXA3A&s'},
+    {id: '7', title: 'Джинсы 4', price: 550, description: 'Синего цвета, прямые', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbPl9ck0xRFrWSQkG3CVjF0hToyZgvsjXA3A&s'},
+    {id: '8', title: 'Куртка 5', price: 1200, description: 'Зеленого цвета, теплая', image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbPl9ck0xRFrWSQkG3CVjF0hToyZgvsjXA3A&s'},
 ]
 
 const getTotalPrice = (items = []) => {
