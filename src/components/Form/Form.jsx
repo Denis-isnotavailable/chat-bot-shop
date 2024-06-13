@@ -64,7 +64,7 @@ const Form = () => {
     }
 
     return (
-        <div className={"form"}>
+        <form className={"form"}>
             <h3>Введіть ваші дані</h3>
             <input
                 className={'input'}
@@ -96,12 +96,12 @@ const Form = () => {
             />
             <input
                 className={'input'}
-                type="mail"
+                type="email"
                 placeholder={'Email'}
                 value={email}
                 onChange={onChangeEmail}
             />
-        </div>
+        </form>
     );
 };
 
