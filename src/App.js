@@ -3,6 +3,9 @@ import { useEffect } from 'react';
 import './App.css';
 import {useTelegram} from "./hooks/useTelegram";
 import Header from './components/Header/Header';
+import {Route, Routes} from 'react-router-dom'
+import ProductList from "./components/ProductList/ProductList";
+import Form from "./components/Form/Form";
 
 function App() {
   const {tg} = useTelegram();
@@ -11,20 +14,16 @@ function App() {
     tg.ready();
   }, [tg]);
 
-  const onClose = () => {
-    tg.close();
-  }
-
   return (
     <div className="App">
-      <Header />
-      
-      my app
-
-      <button type='button' onClick={onClose}>
-        Close
-      </button>
-    </div>
+      <div className="App">
+          <Header />
+          <Routes>
+            <Route index element={<ProductList />}/>
+            <Route path={'form'} element={<Form />}/>
+          </Routes>
+      </div>
+  </div>
   );
 }
 
