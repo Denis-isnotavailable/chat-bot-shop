@@ -5,8 +5,10 @@ import {useTelegram} from "../../hooks/useTelegram";
 const Form = () => {
     const [area, setArea] = useState('');
     const [city, setCity] = useState('');
-    const [address, setAddress] = useState('');
+    const [address, setAddress] = useState('');  
     const [phone, setPhone] = useState('');
+    const [email, setEmail] = useState('');
+
     const {tg} = useTelegram();
 
     const onSendData = useCallback(() => {
@@ -14,10 +16,11 @@ const Form = () => {
             area,
             city,
             address,
-            phone
+            phone,
+            email
         }
         tg.sendData(JSON.stringify(data));
-    }, [address, area, city, phone, tg])
+    }, [address, area, city, phone, email, tg])
 
     useEffect(() => {
         tg.onEvent('mainButtonClicked', onSendData)
@@ -33,12 +36,12 @@ const Form = () => {
     }, [tg.MainButton])
 
     useEffect(() => {
-        if(!area || !city || !address || !phone) {
+        if(!area || !city || !address || !phone || !email) {
             tg.MainButton.hide();
         } else {
             tg.MainButton.show();
         }
-    }, [address, area, city, phone, tg.MainButton])
+    }, [address, area, city, email, phone, tg.MainButton])
 
     const onChangeArea = (e) => {
         setArea(e.target.value)
@@ -54,6 +57,10 @@ const Form = () => {
 
     const onChangePhone = (e) => {
         setPhone(e.target.value)
+    }
+
+    const onChangeEmail = (e) => {
+        setEmail(e.target.value)
     }
 
     return (
@@ -86,6 +93,13 @@ const Form = () => {
                 placeholder={'Номер телефону'}
                 value={phone}
                 onChange={onChangePhone}
+            />
+            <input
+                className={'input'}
+                type="mail"
+                placeholder={'Email'}
+                value={email}
+                onChange={onChangeEmail}
             />
         </div>
     );

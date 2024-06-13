@@ -23,7 +23,9 @@ const getTotalPrice = (items = []) => {
 
 const ProductList = () => {
     const [addedItems, setAddedItems] = useState([]);
-    const {tg, queryId} = useTelegram();
+    const { tg, queryId } = useTelegram();
+    
+    console.log(addedItems);
 
     const onSendData = useCallback(() => {
         const data = {
@@ -51,7 +53,7 @@ const ProductList = () => {
         const alreadyAdded = addedItems.find(item => item.id === product.id);
         let newItems = [];
 
-        if(alreadyAdded) {
+        if (alreadyAdded) {
             newItems = addedItems.filter(item => item.id !== product.id);
         } else {
             newItems = [...addedItems, product];
@@ -76,6 +78,7 @@ const ProductList = () => {
                     key={item?.id}    
                     product={item}
                     onAdd={onAdd}
+                    addedItems={addedItems}
                     className={'item'}
                 />
             ))}

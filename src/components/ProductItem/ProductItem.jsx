@@ -1,8 +1,16 @@
-import React from 'react';
+import {useEffect, useState} from 'react';
 import Button from "../Button/Button";
 import './ProductItem.css';
 
-const ProductItem = ({product, className, onAdd}) => {
+const ProductItem = ({ product, className, onAdd, addedItems }) => {
+    const [isInCart, setIsInCart] = useState(false);
+
+    useEffect(() => {        
+        const isProductInCart = addedItems.find(({ id }) => id === product.id);
+        if (isProductInCart) setIsInCart(true)
+        else setIsInCart(false)        
+        
+    }, [addedItems, product.id]);
 
     const onAddHandler = () => {
         onAdd(product);
@@ -19,7 +27,7 @@ const ProductItem = ({product, className, onAdd}) => {
                 <span>Вартість: <b>{product.price}</b></span>
             </div>
             <Button className={'add-btn'} onClick={onAddHandler}>
-                Додати в кошик
+                {isInCart ? 'В кошику' : 'Додати в кошик'}
             </Button>
         </li>
     );
