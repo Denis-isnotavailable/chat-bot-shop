@@ -1,14 +1,15 @@
 
 import { useEffect } from 'react';
 import './App.css';
-
-const tg = window.Telegram.WebApp;
+import {useTelegram} from "./hooks/useTelegram";
+import Header from './components/Header/Header';
 
 function App() {
+  const {tg} = useTelegram();
 
   useEffect(() => {
     tg.ready();
-  }, []);
+  }, [tg]);
 
   const onClose = () => {
     tg.close();
@@ -16,6 +17,7 @@ function App() {
 
   return (
     <div className="App">
+      <Header />
       
       my app
 
